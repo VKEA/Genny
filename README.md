@@ -1,6 +1,6 @@
 ![GennyBot Banner](https://repository-images.githubusercontent.com/244455404/8b66a600-5cce-11ea-83ac-49da610ba9e1)
 
-Genny is a Bot biolerplate created from another bot boilerplate: [Violet](https://github.com/janicescm/Violet-Open-Source)
+Genny is a Bot boilerplate created from another bot boilerplate: [Violet](https://github.com/janicescm/Violet-Open-Source)
 
 ## installation
 Genny runs on node and uses npm and the discord.io library. Don't forget to do the correct installs ```npm i```
