@@ -1,4 +1,4 @@
-module.exports = function difworldMessage (twitGenny, slackGenny, discordGenny, data) {
+module.exports = function SlackResponses (twitGenny, slackGenny, discordGenny, data) {
     var params = {
         as_user: true
     };

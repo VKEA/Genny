@@ -1,4 +1,4 @@
-module.exports = function vkeaserverMessage (twitGenny, slackGenny, discordGenny, user, userID, channelID, message, evt) {
+module.exports = function DiscordResponses (twitGenny, slackGenny, discordGenny, user, userID, channelID, message, evt) {
     if (message.substring(0, 6) == 'genny.') {
         var args = message.substring(6).split(' ');
         var cmd = args[0];
