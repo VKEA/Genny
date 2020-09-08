@@ -6,6 +6,8 @@
     "author": "Janice Coleman, Bryan Kho",
     "dependencies": {
         "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+        "mongodb": "^3.6.1",
+        "mysql": "^2.18.1",
         "slackbots": "^1.2.0",
         "twit": "^2.2.11",
         "winston": "2.*"
