@@ -1,11 +1,11 @@
 module.exports = function SlackResponses (twitGenny, slackGenny, discordGenny, data) {
-    var params = {
+    const params = {
         as_user: true
     };
     
     if (data.text !== undefined && data.text.substring(0, 6) == 'genny.') {
-        var args = data.text.substring(6).split(' ');
-        var cmd = args[0];
+        const args = data.text.substring(6).split(' ');
+        const cmd = args[0];
 
         args = args.splice(1);
 

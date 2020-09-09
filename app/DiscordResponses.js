@@ -1,7 +1,7 @@
 module.exports = function DiscordResponses (twitGenny, slackGenny, discordGenny, user, userID, channelID, message, evt) {
     if (message.substring(0, 6) == 'genny.') {
-        var args = message.substring(6).split(' ');
-        var cmd = args[0];
+        const args = message.substring(6).split(' ');
+        const cmd = args[0];
         args = args.splice(1);
 
         switch(cmd) {
