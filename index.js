@@ -1,13 +1,17 @@
-/* imports */
-var Discord = require('discord.io');
-var Slack = require('slackbots');
-var Twit = require('twit')
-var logger = require('winston');
-var auth = require('./auth.json');
+/* import Database libraries*/
+const MongoClient = require('mongodb').MongoClient;
+const mysql = require('mysql');
+
+/* import API libraries */
+const Discord = require('discord.io');
+const Slack = require('slackbots');
+const Twit = require('twit')
+const logger = require('winston');
+const auth = require('./auth.json');
 
 /* import code from app folder */
-var DiscordResponses = require('./app/DiscordResponses.js/index.js')
-var SlackResponses = require('./app/SlackResponses.js/index.js')
+const DiscordResponses = require('./app/DiscordResponses.js/index.js')
+const SlackResponses = require('./app/SlackResponses.js/index.js')
 
 /* Configure logger settings */
 logger.remove(logger.transports.Console);
@@ -16,10 +20,28 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 
-/* Initialize Omegle Bot */
+/* Configure MySQL */
+const mySQLCon = mysql.createConnection({
+    host: "localhost",
+    user: "yourusername",
+    password: "yourpassword"
+});
+
+mySQLCon.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected to MySQL database!");
+});
+
+/* Configure MongoDB */
+const mongoDBUrl = "mongodb://username:password@localhost:27017/mydb";
+MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    console.log("Connected to MongoDB database!");
+    db.close();
+});
 
 /* Initialize Twitter Bot */
-var twitGenny = new Twit({
+const twitGenny = new Twit({
     consumer_key: auth.twitter.consumer_key,
     consumer_secret: auth.twitter.consumer_secret,
     access_token: auth.twitter.access_token,
@@ -32,12 +54,12 @@ logger.info('Twitter bot initialised');
 
 /* Initialize Slack Bot */
 
-var slackGenny = new Slack({
+const slackGenny = new Slack({
     token: auth.slack.token,
     name: 'Genny'
 });
 
-var params = {
+const params = {
     as_user: true
 };
 
@@ -54,7 +76,7 @@ slackGenny.on('message', function (data) {
 });
 
 /* Initialize Discord Bot */
-var discordGenny = new Discord.Client({
+const discordGenny = new Discord.Client({
    token: auth.discord.token,
    autorun: true
 });
